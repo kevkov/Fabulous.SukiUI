@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Native\MobileMenuPage.fs" />
+        <Compile Include="Controls\MobileMenuPage.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Fabulous.Avalonia\Fabulous.Avalonia.fsproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="SukiUI" Version="4.5.5" />
+    </ItemGroup>
+
+</Project>
