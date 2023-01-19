@@ -2,6 +2,7 @@ namespace CounterApp
 
 open Fabulous
 open Fabulous.Avalonia
+open Fabulous.SukiUI.Controls
 
 open type Fabulous.Avalonia.View
 
@@ -41,35 +42,15 @@ module App =
             else
                 model, Cmd.none
 
-    let view model =
-        (VStack() {
-            TextBlock($"%d{model.Count}").centerText ()
-
-            Button("Increment", Increment).centerHorizontal ()
-
-            Button("Decrement", Decrement).centerHorizontal ()
-
-            (HStack() {
-                TextBlock("Timer").centerVertical ()
-
-                ToggleSwitch(model.TimerOn, TimerToggled)
-            })
-                .margin(20.)
-                .centerHorizontal ()
-
-            Slider(0.0, 10.0, double model.Step, SetStep)
-
-            TextBlock($"Step size: %d{model.Step}").centerText ()
-
-            Button("Reset", Reset).centerHorizontal ()
-
-        })
-            .center ()
+    let view model =        
+        let x = MobileMenuPage()
+        x
 
 #if MOBILE
     let app model = SingleViewApplication(view model)
 #else
     let app model = DesktopApplication(Window(view model))
 #endif
+
 
     let program = Program.statefulWithCmd init update app
