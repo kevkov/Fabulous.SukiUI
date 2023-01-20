@@ -43,7 +43,7 @@ module App =
                 model, Cmd.none
 
     let view model =        
-        let x = MobileMenuPage()
+        let x = MobileMenuPage Increment
         x
 
 #if MOBILE
