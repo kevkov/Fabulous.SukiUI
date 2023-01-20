@@ -1,17 +1,30 @@
 ﻿namespace Fabulous.SukiUI.Controls
 
+open Material.Icons
+open Material.Icons.Avalonia
+open Avalonia.Media
+open Fabulous.Avalonia
+open type View
+
 [<AutoOpen>]
 module MobileMenuPage =
 
-    open Fabulous.Avalonia
-    open type View
 
-    let MobileMenuPage () =
+    let MobileMenuPage (showHideMenu) =
+        let icon = MaterialIcon(Kind = MaterialIconKind.ChevronLeft)
         let pane () =
             Grid() {
-                Canvas() {
-                    TextBlock("Hello")
-                }
+               (Canvas() {
+                    Border(
+                        VStack() {
+                            Button(Grid() { icon }, showHideMenu)
+                        }
+                    )
+                        .borderBrush(SolidColorBrush(Color.Parse("#454545")))
+                        .borderThickness(0., 0., 1., 0.)
+                })
+                    .background(SolidColorBrush(Color.Parse("#333333")))
+                    
             }
             
         let content () =
