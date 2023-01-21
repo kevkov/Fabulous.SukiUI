@@ -8,15 +8,15 @@ open type View
 [<AutoOpen>]
 module MobileMenuPage =
 
-    let MobileMenuPage showHideMenu =
-        let icon = MaterialIcon(Material.Icons.MaterialIconKind.ChevronLeft, 35., 35., SolidColorBrush(Colors.Red))
+    let MobileMenuPage (index:int) increment =
+        let icon = MaterialIcon(enum<Material.Icons.MaterialIconKind> index, 48., 48., SolidColorBrush(Colors.Red))
         let pane () =
             Grid() {
                (Canvas() {
                     Border(
                         VStack() {
-                            Button(icon, showHideMenu)
-                            TextBlock("hello")
+                            Button(icon, increment)
+                            TextBlock(string index).foreground(SolidColorBrush(Colors.Green))
                         }
                     )
                         .borderBrush(SolidColorBrush(Color.Parse("#454545")))

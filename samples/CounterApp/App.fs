@@ -18,7 +18,7 @@ module App =
         | TimerToggled of bool
         | TimedTick
 
-    let initModel = { Count = 0; Step = 1; TimerOn = false }
+    let initModel = { Count = 1674; Step = 1; TimerOn = false }
 
     let timerCmd () =
         async {
@@ -42,8 +42,8 @@ module App =
             else
                 model, Cmd.none
 
-    let view model =        
-        let x = MobileMenuPage Increment
+    let view model =
+        let x = MobileMenuPage model.Count Increment
         x
 
 #if MOBILE
@@ -51,6 +51,5 @@ module App =
 #else
     let app model = DesktopApplication(Window(view model))
 #endif
-
 
     let program = Program.statefulWithCmd init update app
