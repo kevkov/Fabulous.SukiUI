@@ -20,6 +20,8 @@ type SplashActivity() =
                     let x = Program.startApplication App.program
                     x.Styles.Clear()
                     x.Styles.Add(StyleInclude(Uri("avares://Material.Icons.Avalonia/"), Source = Uri("avares://Material.Icons.Avalonia/App.xaml")))
+                    x.Styles.Add(StyleInclude(Uri("avares://Fabulous.Avalonia.SukiUI.Theme/"), Source = Uri("avares://Fabulous.Avalonia.SukiUI.Theme/Light.axaml")))
+                    x.Styles.Add(StyleInclude(Uri("avares://Fabulous.SukiUI/Theme/"), Source = Uri("avares://Fabulous.SukiUI/Theme/ButtonStyles.xaml")))
                     x)
             .UseAndroid()
 

@@ -12,12 +12,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Fabulous.Avalonia\Fabulous.Avalonia.fsproj" />
+        <ProjectReference Include="..\Fabulous.Avalonia\Fabulous.Avalonia.fsproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Material.Icons.Avalonia" Version="1.2.0" />
-      <PackageReference Include="SukiUI" Version="4.5.5" />
+        <PackageReference Include="Material.Icons.Avalonia" Version="1.2.0" />
+        <PackageReference Include="SukiUI" Version="4.5.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Theme\ButtonStyles.xaml" />
     </ItemGroup>
 
 </Project>
