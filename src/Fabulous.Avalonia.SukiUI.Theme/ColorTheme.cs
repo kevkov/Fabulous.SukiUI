@@ -4,18 +4,18 @@ using Avalonia.Styling;
 
 namespace Fabulous.Avalonia.SukiUI.Theme;
 
-// public static class ColorTheme
-// {
-//     public static void LoadDarkTheme(Application app)
-//     {
-//         app.Styles.Add(new Dark());
-//     }   
-//     
-//     public static void LoadLightTheme(Application app)
-//     {
-//         app.Styles.Add(new Light());
-//     }  
-// }
+public static class ColorTheme
+{
+    public static void LoadDarkTheme(global::Avalonia.Application app)
+    {
+        app.Styles.Add(new Dark());
+    }   
+    
+    public static void LoadLightTheme(global::Avalonia.Application app)
+    {
+        app.Styles.Add(new Light());
+    }  
+}
 
 public class Dark : Styles
 {

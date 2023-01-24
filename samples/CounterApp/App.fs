@@ -1,8 +1,11 @@
 namespace CounterApp
 
+open Avalonia
 open Fabulous
 open Fabulous.Avalonia
+open Fabulous.Avalonia.SukiUI.Theme
 open Fabulous.SukiUI.Controls
+open Fabulous.Avalonia;
 
 open type Fabulous.Avalonia.View
 
@@ -31,7 +34,9 @@ module App =
 
     let update msg model =
         match msg with
-        | Increment -> { model with Count = model.Count + model.Step }, Cmd.none
+        | Increment ->
+            if model.Count % 2 = 0 then ColorTheme.LoadDarkTheme(Application.Current) else ColorTheme.LoadLightTheme(Application.Current)
+            { model with Count = model.Count + model.Step }, Cmd.none
         | Decrement -> { model with Count = model.Count - model.Step }, Cmd.none
         | Reset -> initModel, Cmd.none
         | SetStep n -> { model with Step = int (n + 0.5) }, Cmd.none
