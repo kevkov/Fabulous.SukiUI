@@ -3,12 +3,11 @@
 open Fabulous
 open Fabulous.Avalonia
 open Fabulous.StackAllocatedCollections.StackList
-open SukiUI.Controls
 
 type IFabMobileMenuPage = inherit IFabUserControl
 
 module MobileMenuPage =
-    let WidgetKey = Widgets.register<MobileMenuPage> ()
+    let WidgetKey = Widgets.register<SukiUI.Controls.MobileMenuPage> ()
 
 [<AutoOpen>]
 module MobileMenuPageBuilders =

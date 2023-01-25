@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Controls\Extensions.fs" />
         <Compile Include="Native\MobileMenuPage.fs" />
         <Compile Include="Native\MaterialIcon.fs" />
         <Compile Include="Controls\MobileMenuPage.fs" />

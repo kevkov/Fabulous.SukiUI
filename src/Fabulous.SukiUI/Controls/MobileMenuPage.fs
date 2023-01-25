@@ -3,7 +3,9 @@
 open Fabulous.SukiUI.Native
 open Avalonia.Media
 open Fabulous.Avalonia
+open Avalonia
 open type View
+open Extensions
 
 [<AutoOpen>]
 module MobileMenuPage =
@@ -16,13 +18,14 @@ module MobileMenuPage =
                     Border(
                         VStack() {
                             Button(icon, increment)
+                                .classes("Accent")
                             TextBlock(string index).foreground(SolidColorBrush(Colors.Green))
                         }
                     )
-                        .borderBrush(SolidColorBrush(Color.Parse("#454545")))
                         .borderThickness(0., 0., 1., 0.)
+                        .borderBrushStyle("SukiBorderBrush")
                 })
-                    .background(SolidColorBrush(Color.Parse("#333333")))
+                    .backgroundStyle("SukiBackground")
                     
             }
             
