@@ -1,8 +1,10 @@
 ﻿namespace Fabulous.SukiUI.Native
 
+open System.Runtime.CompilerServices
+open Avalonia.Media
+open Avalonia
 open Fabulous
 open Fabulous.Avalonia
-open Fabulous.StackAllocatedCollections.StackList
 open Material.Icons.Avalonia
 
 type IFabMaterialIcon =
@@ -26,16 +28,17 @@ module MaterialIcon =
 module MaterialIconBuilders =
     type View with
 
-        static member inline MaterialIcon(kind, width, height, foreground: WidgetBuilder<'msg, #IFabBrush>) =
+        static member inline MaterialIcon(kind) =
             WidgetBuilder<'msg, IFabMaterialIcon>(
                 MaterialIcon.WidgetKey,
-                AttributesBundle(
-                    StackList.three (
-                        MaterialIcon.Kind.WithValue(kind),
-                        MaterialIcon.Width.WithValue(width),
-                        MaterialIcon.Height.WithValue(height)
-                    ),
-                    ValueSome [| MaterialIcon.Foreground.WithValue(foreground.Compile()) |],
-                    ValueNone
-                )
+                MaterialIcon.Kind.WithValue(kind)
             )
+            
+    [<Extension>]
+    type MaterialIconModifiers =
+        [<Extension>]
+        static member inline foregroundStyle<'msg, 'T when 'T :> IFabMaterialIcon>(this: WidgetBuilder<'msg, 'T>, resourceName: string) =
+            let found, styleValue = Application.Current.Styles.TryGetResource resourceName
+            if found then
+                this.foreground(View.SolidColorBrush(Color.Parse(styleValue.ToString())))
+            else this
