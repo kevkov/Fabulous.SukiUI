@@ -25,7 +25,14 @@ module MobileMenuPage =
                                 .classes("Accent")
                                 .horizontalAlignment(HorizontalAlignment.Right)
                                 .margin(Thickness(0,5,25,0))
-                            TextBlock(string index).foreground(SolidColorBrush(Colors.Green))
+                            
+                            Grid() {
+                                TextBlock("Header").foreground(SolidColorBrush(Colors.Green))
+                            }
+                            
+                            (Grid() {
+                                TextBlock("extra grid")
+                            }).height(40.)
                         })
                             .margin(Thickness(-20,0,0,0.))
                     )
