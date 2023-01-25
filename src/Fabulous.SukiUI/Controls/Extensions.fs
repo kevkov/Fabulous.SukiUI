@@ -6,6 +6,7 @@ open Avalonia.Controls
 open Fabulous.Avalonia
 open Avalonia.Media
 open Fabulous
+open Fabulous.StackAllocatedCollections.StackList
 
 module StyledElement =
     
@@ -15,6 +16,20 @@ module StyledElement =
         | ValueNone -> target.Classes.Clear()
         | ValueSome v -> target.Classes <- Classes(v)
     )
+
+[<AutoOpen>]
+
+module Builders =
+   type Fabulous.Avalonia.View with    
+        static member inline RadioButton(content: WidgetBuilder<'msg, #IFabControl>, isChecked: bool) =
+            WidgetBuilder<'msg, IFabRadioButton>(
+                RadioButton.WidgetKey,
+                AttributesBundle(
+                    StackList.one (RadioButton.IsChecked.WithValue(isChecked)),
+                    ValueSome [| ContentControl.ContentWidget.WithValue(content.Compile()) |],
+                    ValueNone
+                )
+            )
     
 module Extensions =
  

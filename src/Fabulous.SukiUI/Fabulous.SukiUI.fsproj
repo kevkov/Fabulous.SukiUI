@@ -23,6 +23,8 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Theme\ButtonStyles.xaml" />
+        <AvaloniaResource Include="Theme\RadioButtonStyles.xaml" />
+        <AvaloniaResource Include="Theme\TextBlockStyles.xaml" />
     </ItemGroup>
 
 </Project>

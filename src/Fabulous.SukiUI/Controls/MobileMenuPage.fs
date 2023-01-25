@@ -7,11 +7,22 @@ open Fabulous.Avalonia
 open Avalonia
 open type View
 open Extensions
+open Material.Icons
 
 [<AutoOpen>]
 module MobileMenuPage =
+    
+    type MenuItem = {
+        Header: string
+        Kind: MaterialIconKind
+        Content: obj
+    }
 
     let MobileMenuPage (index:int) increment =
+        let menuItems = [
+            { Header = "DashBoard"; Kind = MaterialIconKind.CircleOutline; Content = null }
+            { Header = "Settings"; Kind = MaterialIconKind.Settings; Content = null }
+        ]
         let icon = MaterialIcon(enum<Material.Icons.MaterialIconKind> index)
                         .height(35.)
                         .width(35.)
@@ -31,8 +42,30 @@ module MobileMenuPage =
                             }
                             
                             (Grid() {
-                                TextBlock("extra grid")
+                                TextBlock("")
                             }).height(40.)
+                            
+                            for mi in menuItems do
+                                RadioButton(
+                                    Grid() {
+                                        Dock() {
+                                            MaterialIcon(mi.Kind)
+                                                .height(22.)
+                                                .margin(Thickness(15,0,0,0))
+                                                .width(22.)
+                                            TextBlock(mi.Header)
+                                                .classes("h4")
+                                                .fontWeight(FontWeight.Medium)
+                                                .margin(Thickness(20,8,8,8))
+                                        }
+                                    }, true
+                                )
+                                    .classes("MenuItemMobile")
+                                    .groupName("MenuItemsGroup")
+                                    .height(50.)
+                                    .horizontalAlignment(HorizontalAlignment.Center)
+                                    .isEnabled(true)
+                                    .width(356)
                         })
                             .margin(Thickness(-20,0,0,0.))
                     )
